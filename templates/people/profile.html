@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% extends "people/peoplebase.html" %}
+{% load staticfiles %}
+
+    {% block content_block %}
+    <div class="inner_content">
+        <div class="container">
+
+        <div class="jumbotron container">
+
+                <div class="row">
+                    <!-- Profile -->
+                    <div class="col-xs-12 col-sm-4 col-md-3 left_image">
+                        <td><img src="{{ profile_image }}" alt="{{ name }} profile image" class="img-rounded img-responsive"></td>
+                        <div class="hero_name">
+                            <h3><strong>{{ name }}</strong></h3>
+                        </div>
+                    </div>
+
+                    <!-- Tile grid -->
+                    <div class="col-xs-12">
+                        <div class="row" id="results" >
+                            <!-- Header -->
+                            <div class="col-xs-12 table_header">
+                                <h3>Filmography:</h3>
+                            </div>
+                            <!-- Tiles -->
+                            {% for project, hero_role, redundant_role in common_list %}
+                            <div class="col-xs-12 col-sm-4 info_tile thumbnail">
+                                <div class="row">
+                                    <div class="col-xs-5 col-sm-4 poster">
+                                        <a href="{{ project.link }}"><img class="img-responsive" src="{{ project.poster }}" alt="{{project.title}} poster"></a>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-8">
+                                        <div class="col-xs-12 title">
+                                            <h4><strong>{{ project.title }}</strong>{% if project.year != '0' %} ({{ project.year }}) {% endif %}</h4>
+                                        </div>
+                                        <div class="col-xs-12 hero_role">
+                                            <strong>{{ name }}</strong>:
+                                            <!-- if statement adds comma only if there is more than one item on list -->
+                                            {% for role in hero_role  %}{% if not forloop.first %}, {% endif %} {{ role }}{% endfor %}
+                                        </div>
+                                    </div>
+                                    <!-- Foldout -->
+                                    <div class="col-sm-4 col-hidden-xs "></div>
+                                    <div class="hidden_id">{{ project.id }},{{ project.media_type }}</div>
+                                    <div class="col-xs-12 col-sm-8 details">
+                                        <p class="get_details"><br><i class="fa fa-plus-circle" aria-hidden="true"></i> Show full cast and crew</p>
+
+                                        <p style="display: none"><br><i class="fa fa-minus-circle" aria-hidden="true"></i> Hide full cast and crew</p>
+                                        <div class="foldout col-xs-12">
+                                            <div class=row>
+                                                <div class="col-sm-6 cast_list">
+                                                    <h4>Cast</h4>
+                                                    <ul></ul>
+                                                </div>
+                                                <div class="col-sm-6 crew_list">
+                                                    <h4>Crew</h4>
+                                                    <ul></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </div>
+    </div>
+
+    {% endblock %}
+
+    {% block script_block %}
+        <script type="text/javascript">
+        $(document).ready(function() {
+            mcPageVars["pageView"] = "single";
+            mcPageVars["pageType"] = "people";
+            mcPageVars["heroID"] = "{{ hero.id }}";
+        });
+        </script>
+    {% endblock %}

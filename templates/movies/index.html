@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% extends "movies/moviebase.html" %}
+{% load staticfiles %}
+
+{% block content_block %}
+<div class="inner_content">
+    <div class="container">
+
+    <div class="jumbotron container">
+
+            <div class="row">
+                <!-- Profile -->
+                <div class="col-xs-12 col-sm-4 col-md-3 left_image">
+                    <td><img src="{{ project.image }}" alt="{{ project.title }} poster" class="img-rounded img-responsive"></td>
+                    <div class="project_name">
+                        <h3><strong>{{ project.title }}</strong></h3>
+                    </div>
+                </div>
+
+                {% if cast_crew %}
+                <!-- Tile grid -->
+                <div class="col-xs-12">
+                    <div class="row" id="results" >
+                        <!-- Header -->
+                        <div class="col-xs-12 table_header">
+                            <h3>Cast &amp; Crew:</h3>
+                        </div>
+                        <!-- Tiles -->
+                        {% for person, roles in cast_crew %}
+                        <div class="col-xs-12 col-sm-4 info_tile thumbnail">
+                            <div class="row">
+                                <div class="col-xs-5 col-sm-4 poster">
+                                    <a href="{{ person.link }}"><img class="img-responsive" src="{{ person.image }}" alt="{{person.name}} image"></a>
+                                </div>
+                                <div class="col-xs-12 col-sm-8">
+                                    <div class="col-xs-12 title">
+                                        <h4><strong>{{ person.name }}</strong></h4>
+                                    </div>
+                                    <div class="col-xs-12 hero_role">
+                                        <!-- if statement adds comma only if there is more than one item on list -->
+                                        {% for role in roles  %}{% if not forloop.first %}, {% endif %} {{ role }}{% endfor %}
+                                    </div>
+                                </div>
+                                <!-- Foldout -->
+                                <div class="col-sm-4 col-hidden-xs "></div>
+                                <div class="hidden_id">{{ person.id }}</div>
+                                <div class="col-xs-12 col-sm-8 details">
+                                    <p class="get_details"><br><i class="fa fa-plus-circle" aria-hidden="true"></i> Show filmography</p>
+
+                                    <p style="display: none"><br><i class="fa fa-minus-circle" aria-hidden="true"></i> Hide filmography</p>
+                                    <div class="foldout col-xs-12 filmography">
+                                        <ul></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% else %}
+                    <div id="not_found" class="thumbnail">
+                        <h3>Sorry, we don't have any data available on <strong>{{ project.title }}'s'</strong> cast and crew.</h3>
+                    </div>
+                {% endif %}
+            </div>
+    </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script_block %}
+    <script type="text/javascript">
+    $(document).ready(function() {
+        mcPageVars["pageView"] = "single";
+        mcPageVars["pageType"] = "project";
+        mcPageVars["projectID"] = "{{ project.id }}";
+        mcPageVars["projectMT"] = "{{ project.media_type }}"
+    });
+    </script>
+{% endblock %}

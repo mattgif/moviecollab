@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% extends "collabfinder/homebase.html" %}
+{% load staticfiles %}
+
+    {% block content_block %}
+
+    <div class="container">
+        <div class="row" >
+            <div class="col-lg-12" >
+                <div class="content">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="add addperson col-xs-6">
+                                <i class="fa fa-user fa-5x" id="personicon" aria-hidden="true"></i>
+                            </div>
+                            <div class="add addmovie col-xs-6">
+                                <i class="fa fa-film fa-5x" id="filmicon" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="initialhelp container">
+                        <h2>Select an icon to begin</h2>
+                    </div>
+
+                    <div id="searchdiv">
+                        <form id="people_form" class="form-inline" action="{% url 'people:peopleindex' %}" method="GET">
+                            <div class="form-group peoplediv">
+
+                                <select class="form-control people_query" multiple id="hero_query" name="q" style="width:100%"></select>
+                                <h3>Search for someone to view their filmography...</h3>
+                                <h4>add a collaborator to find projects they've worked on together</h4>
+                                <button type="submit" class="btn btn-primary" name="go">Find collaborations</button>
+                                {% csrf_token %}
+
+                            </div>
+                        </form>
+
+                        <form id="movie_form" class="form-inline" action="{% url 'movies:movieindex' %}" method="POST">
+                            <div class="form-group moviediv">
+
+                                <select class="form-control movie_query" multiple id="movie_query" name="q" style="width:100%"></select>
+                                <h3>Search for a movie to view its cast and crew...</h3>
+                                <h4>add another to find who has worked on both</h4>
+                                <button type="submit" class="btn btn-success" name="go">Find collaborators</button>
+                                {% csrf_token %}
+
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load staticfiles %}
+
+    {% block css_block %}
+        <link rel="stylesheet" href="{% static 'css/content.css' %}">
+    {% endblock %}
+
+    {% block header_block %}
+    <!-- navbar -->
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url "index" %}"><img src="{% static 'images/logo-navbar.png' %}" alt=""> movie<strong>collab</strong></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><i class="fa fa-question-circle" aria-hidden="true"></i>  help</a></li>
+                    <li><a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i>  contact</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <!-- search bars -->
+    <div class="container selecttype">
+        <div class="row">
+            <div class="add addperson col-xs-6">
+                <i class="fa fa-user fa-5x" id="personicon" aria-hidden="true"></i>
+            </div>
+
+            <div class="add addmovie col-xs-6">
+                <i class="fa fa-film fa-5x" id="filmicon" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+
+    <div id="searchdiv">
+        <form id="people_form" class="form-inline" action="{% url 'people:peopleindex' %}" method="GET">
+            <div class="form-group peoplediv">
+
+                <select class="form-control people_query" multiple id="hero_query" name="q" style="width:100%"></select>
+                <h3>Search for someone to view their filmography...</h3>
+                <h4>add a collaborator to find projects they've worked on together</h4>
+                <button type="submit" class="btn btn-primary" name="go">Find collaborations</button>
+                {% csrf_token %}
+
+            </div>
+        </form>
+
+        <form id="movie_form" class="form-inline" action="{% url 'movies:movieindex' %}" method="GET">
+            <div class="form-group moviediv">
+
+                <select class="form-control movie_query" multiple id="movie_query" name="q" style="width:100%"></select>
+                <h3>Search for a movie to view its cast and crew...</h3>
+                <h4>add another to find who has worked on both</h4>
+                <button type="submit" class="btn btn-success" name="go">Find collaborators</button>
+                {% csrf_token %}
+
+            </div>
+        </form>
+    </div>
+    {% endblock %}
+
+    {% block footer_block %}
+    <div id="backdrop_filter"></div>
+    {% endblock %}

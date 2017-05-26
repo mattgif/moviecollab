@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>moviecollab</title>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:200,800|Josefin+Sans" rel="stylesheet">
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
+        <link href="{% static 'css/master.css' %}" rel="stylesheet">
+        {% block css_block %}{% endblock %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    </head>
+    <body>
+
+    <div id="all_content">
+        <div class="filter"></div>
+
+        <div id="header_and_content">
+
+        {% block header_block %}
+        {% endblock %}
+
+        <div id="content_and_footer">
+
+        {% block content_block %}
+        {% endblock %}
+
+        </div><!-- header and content-->
+
+        {% block footer_block %}
+        {% endblock %}
+        </div> <!--content and footer-->
+    </div><!--all content-->
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/moviecollab.js' %}"></script>
+    {% block script_block %}{% endblock %}
+    </body>
+</html>
