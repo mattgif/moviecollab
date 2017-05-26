@@ -18,20 +18,10 @@
 
 {% block footer_block %}
 <div class="container footer" id="footer">
-    <div class="row">
-        <div class="col-xs-12 col-sm-1 col-md-2 col-lg-1">
+    <div class="help_btn"><i class="fa fa-question-circle fa-3x" aria-hidden="true" data-toggle="modal" data-target="#helpModal"></i></div>
 
-        </div>
-        <div class="col-xs-12 col-sm-10 col-lg-9 row">
-            <div class="col-xs-9" id="footertext">
-                <p>This product uses the TMDb API but is not endorsed or certified by TMDb.</p>
-            </div>
-            <div class="col-xs-3" id="footerimg">
-                <a href="https://www.themoviedb.org"><img src="{% static 'images/moviedb-91x81.png' %}" alt=""></a>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-lg-2">
-        </div>
-    </div>
+    <p>This product uses the TMDb API but is not endorsed or certified by TMDb.</p>
+    <a href="https://www.themoviedb.org"><img src="{% static 'images/moviedb-91x81.png' %}" alt=""></a>
+
 </div> <!--footer-->
 {% endblock %}
