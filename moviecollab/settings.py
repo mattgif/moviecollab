@@ -28,7 +28,7 @@ SECRET_KEY = secret_key()
 DEBUG = False
 
 ALLOWED_HOSTS = ['moviecollab.pythonanywhere.com','moviecollab.com', 'www.moviecollab.com']
-# ALLOWED_ HOSTS = []
+# ALLOWED_HOSTS = []
 
 # Application definition
 
