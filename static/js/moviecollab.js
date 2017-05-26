@@ -286,10 +286,30 @@ $(document).ready(function() {
                 } else {
                     roleIndex[id]['year'] = "(" + roleIndex[id]['year'] + ")"
                 }
-                $( '.filmography ul' ).append($('<li data-year="' + roleIndex[id]['year'] + '" >').html("<a href=" + url + query + "><strong>"+ roleIndex[id]['title'] +"</strong> </a> " + roleIndex[id]['year'] + " <em>" + roleIndex[id]['role'] + "</em>"));
+                var $list = loc.find( 'ul' );
+                $list.append($(
+                    '<li data-year="' +
+                    roleIndex[id]['year'].slice(1,5) +
+                    '" >').html("<a href=" +
+                    url +
+                    query +
+                    "><strong>" +
+                    roleIndex[id]['title'] +
+                    "</strong> </a> " +
+                    roleIndex[id]['year'] +
+                    " <em>" +
+                    roleIndex[id]['role'] +
+                    "</em>"));
             }
             // sort li by year attribute
-            
+            var $list = loc.find( 'ul' );
+            var $listli = $list.children('li')
+            $listli.sort(sort_li) // sort elements
+                    .appendTo($list); // append again to the list
+
+            function sort_li( a, b ) {
+                    return $( a ).data('year') < $( b ).data('year') ? 1 : -1;
+            };
         }
     };
 
