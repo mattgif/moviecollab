@@ -1,0 +1,136 @@
+body {
+    /*background-repeat: no-repeat;*/
+    font-family: 'Josefin Sans', sans-serif;
+    color: #EEEEEE;
+    text-align: center;
+    margin-top: 5%;
+    background: url(/static/images/landing_background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+html {
+  height: 100%;
+}
+
+h1, {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 45px;
+}
+
+.footer img {
+    height: 40px;
+    float: left;
+}
+
+.footer p {
+    float: right;
+}
+
+/* styling for main search boxes */
+#personicon {
+    padding-right: 10px;
+}
+
+#filmicon, #personicon {
+    cursor: pointer;
+    transition: color .3s;
+}
+
+#searchdiv {
+    width: 90%;
+    max-width: 800px;
+    max-height: 280px;
+    margin: auto;
+    position: relative;
+    display: none;
+    padding: 15px;
+    padding-bottom: 15px;
+    margin-top: 10px;
+}
+
+button.btn {
+    margin-top: 30px;
+}
+
+/*searchbox settings */
+.peoplediv, .moviediv {
+    margin: auto;
+}
+
+.addmovie {
+    text-align: left;
+}
+
+.addperson {
+    text-align: right;
+}
+
+.select2-selection__choice {
+    color: #333;
+    background-color: #eee;
+}
+
+/* styling for main content pages */
+.left_image, .right_image {
+    text-align: center;
+}
+
+.left_image img, .right_image img, .solo_image img {
+    display: inline-block;
+    max-height: 300px;
+}
+
+.info_tile {
+    color: #333;
+}
+
+/* settings for info_tile foldouts */
+.poster {
+    max-width: 100px;
+}
+
+.hidden_id, .foldout {
+    display: none;
+}
+
+.details > p {
+    font-size: 1em;
+    color: #0097cf;
+    cursor: pointer;
+    padding-left: 15px;
+}
+
+/* getting equal sized colums for info_tiles */
+#results>:nth-child(3n+2) {
+  clear:left;
+}
+
+/* select2 styling*/
+.select2-results, .select2-search, .select2-choice, .select2-search input {
+    color: #333;
+    text-align: left;
+}
+
+.select2-results__option {
+    background-color: white;
+}
+
+.select2-selection.select2-selection--single {
+    height: 33px;
+}
+
+#not_found {
+    color: #333;
+    text-align: center;
+    margin: auto;
+    max-width: 500px;
+}

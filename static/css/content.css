@@ -1,0 +1,52 @@
+body {
+    margin-top: 0px;
+}
+
+/* navbar styling */
+.navbar-inverse {
+    background: rgba(0,0,0,0);
+    border: none;
+}
+
+.navbar-brand {
+    padding: 0px;
+    letter-spacing: .25em;
+}
+.navbar-brand>img {
+    height: 100%;
+    padding: 5px;
+    width: auto;
+    display: inline;
+}
+
+/*  */
+.jumbotron {
+    width: 100%;
+    background-color: rgba(0,0,0,0);
+    text-align: left;
+    color: #ddd;
+}
+
+#searchdiv {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#backdrop_filter {
+    position:fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: rgba(1,1,1,0.6);
+}
+
+.select2-results, .select2-search {
+    color: #333;
+    text-align: left;
+    height: 30px;
+}
+
+#not_found {
+    margin-top: 5%;
+}
