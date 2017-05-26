@@ -26,7 +26,7 @@ SECRET_KEY = 'q)g!xli!n$@gpk0532ic7@x=&_$n7he833%s*7&n9cqz7)86&u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['moviecollab.pythonanywhere.com','moviecollab.com','127.0.0.1']
+ALLOWED_HOSTS = ['moviecollab.pythonanywhere.com','moviecollab.com', 'www.moviecollab.com','127.0.0.1']
 
 
 # Application definition
