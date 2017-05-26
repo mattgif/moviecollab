@@ -37,7 +37,7 @@
                             </div>
                         </form>
 
-                        <form id="movie_form" class="form-inline" action="{% url 'movies:movieindex' %}" method="POST">
+                        <form id="movie_form" class="form-inline" action="{% url 'movies:movieindex' %}" method="GET">
                             <div class="form-group moviediv">
 
                                 <select class="form-control movie_query" multiple id="movie_query" name="q" style="width:100%"></select>
