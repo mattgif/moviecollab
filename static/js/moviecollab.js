@@ -66,12 +66,18 @@ $(document).ready(function() {
     // select2: template for people results display
         if (person.loading) return person.text;
 
+        if (person.known_for[0]) {
+            var known = person.known_for[0].title
+        } else {
+            var known = ""
+        }
+
         var markup = '<div><object type="image/jpg" data="https://image.tmdb.org/t/p/w45' +
         person.profile_path +
         '"><img id="placeholder" src="/static/images/logo_placeholder.png"></object> <strong>' +
         person.name +
         "</strong> ( <em>"+
-        person.known_for[0].original_title +
+        known +
         "</em> )</div>";
 
         return markup;
@@ -82,7 +88,6 @@ $(document).ready(function() {
         return person.name;
     }
 
-    // $("#hero_query,#collab_query").select2({
     $('.people_query').select2({
     // select2: ajax code for people
         ajax: {
@@ -152,6 +157,24 @@ $(document).ready(function() {
         }
 
     }
+
+    $('#hero_query').on('change', function(){
+    // update button contents depending on number of items selected
+        if ($('#hero_query option:selected').length == 1){
+            $(this).nextAll('button').html('View filmography');
+        } else if ($('#hero_query option:selected').length == 2) {
+            $(this).nextAll('button').html('Find collaborations');
+        }
+    });
+
+    $('#movie_query').on('change', function(){
+    // update button contents depending on number of items selected
+        if ($('#movie_query option:selected').length == 1){
+            $(this).nextAll('button').html('View cast and crew');
+        } else if ($('#movie_query option:selected').length == 2) {
+            $(this).nextAll('button').html('Find collaborations');
+        }
+    });
 
     $('.movie_query').select2({
     // select2: ajax code for projects
@@ -263,13 +286,10 @@ $(document).ready(function() {
                 } else {
                     roleIndex[id]['year'] = "(" + roleIndex[id]['year'] + ")"
                 }
-                loc.find( 'ul' ).append($('<li data-year="' + roleIndex[id]['year'] + '" >').html("<a href=" + url + query + "><strong>"+ roleIndex[id]['title'] +"</strong> </a> " + roleIndex[id]['year'] + " <em>" + roleIndex[id]['role'] + "</em>"));
+                $( '.filmography ul' ).append($('<li data-year="' + roleIndex[id]['year'] + '" >').html("<a href=" + url + query + "><strong>"+ roleIndex[id]['title'] +"</strong> </a> " + roleIndex[id]['year'] + " <em>" + roleIndex[id]['role'] + "</em>"));
             }
             // sort li by year attribute
-            loc.find('ul li').sort(sort_li).appendTo('ul');
-            function sort_li(a, b){
-                return ($(b).data('year')) > ($(a).data('year')) ? 1 : -1;
-            };
+            
         }
     };
 
