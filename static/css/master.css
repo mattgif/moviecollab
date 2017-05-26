@@ -19,20 +19,23 @@ h1, {
 }
 
 .footer {
-  margin-top: 100px;
+  margin-top: 20px;
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 45px;
 }
 
+.footer i {
+    cursor: pointer;
+}
 .footer img {
     height: 40px;
-    float: left;
 }
 
 .footer p {
-    float: right;
+    margin-top: 100px
 }
+
 
 /* styling for main search boxes */
 #personicon {
@@ -132,4 +135,17 @@ button.btn {
     text-align: center;
     margin: auto;
     max-width: 500px;
+}
+
+/* help modal */
+#helpModal {
+    color: #333;
+}
+
+#helpModal p {
+    text-align: left;
+}
+
+#helpModal img {
+    height: 30px;
 }

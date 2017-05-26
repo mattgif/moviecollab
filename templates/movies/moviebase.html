@@ -11,23 +11,12 @@
     <nav class="navbar navbar-inverse">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+            <div class="navbar-header pull-left">
                 <a class="navbar-brand" href="{% url "index" %}"><img src="{% static 'images/logo-navbar.png' %}" alt=""> movie<strong>collab</strong></a>
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><i class="fa fa-question-circle" aria-hidden="true"></i>  help</a></li>
-                    <li><a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i>  contact</a></li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
+            <div class="navbar-header pull-right">
+                <p class="navbar-text" data-toggle="modal" data-target="#helpModal"><i  class="fa fa-question-circle" aria-hidden="true"></i>  help</p>
+            </div>
         </div><!-- /.container-fluid -->
     </nav>
 
