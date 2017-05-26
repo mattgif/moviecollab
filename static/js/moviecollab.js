@@ -263,12 +263,14 @@ $(document).ready(function() {
                 } else {
                     roleIndex[id]['year'] = "(" + roleIndex[id]['year'] + ")"
                 }
-                loc.find( 'ul' ).append($('<li>').html("<a href=" + url + query + "><strong>"+ roleIndex[id]['title'] +"</strong> </a> " + roleIndex[id]['year'] + " <em>" + roleIndex[id]['role'] + "</em>"));
+                loc.find( 'ul' ).append($('<li data-year="' + roleIndex[id]['year'] + '" >').html("<a href=" + url + query + "><strong>"+ roleIndex[id]['title'] +"</strong> </a> " + roleIndex[id]['year'] + " <em>" + roleIndex[id]['role'] + "</em>"));
             }
-
+            // sort li by year attribute
+            loc.find('ul li').sort(sort_li).appendTo('ul');
+            function sort_li(a, b){
+                return ($(b).data('year')) > ($(a).data('year')) ? 1 : -1;
+            };
         }
-
-
     };
 
     $( '.info_tile' ).on('click','.details',function(){
