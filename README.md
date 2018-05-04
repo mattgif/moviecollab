@@ -15,4 +15,4 @@ Future updates will provide deeper analytics, including finding frequent collabo
 
 Data: Currently, moviecollab pulls JSON data directly from the Movie Database (TMDB), who very generously provide a free API. (This product uses the TMDb API but is not endorsed or certified by TMDb.)
 
-Code: Backend is python/django. Front end is the usual suspects, using the wonderful select2 plugin for search, and boostrap 3 for layout.
+Code: Backend is python/django. Front end is the usual suspects: JavaScript, jQuery, CSS, HTML5. It uses the wonderful select2 plugin for search.
